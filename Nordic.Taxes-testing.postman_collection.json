@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "9fb89d3a-6d51-4468-937b-ce4cbda4614a",
+		"name": "Nordic.Taxes-testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Municipalities: update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Name\": \"First - changed222\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44331/api/Municipalities/104",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Municipalities",
+						"104"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View municipalities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44331/api/Municipalities",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Municipalities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create municipality",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Name\": \"second\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44331/api/Municipalities",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Municipalities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create municipalities",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get All taxes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44331/api/Taxes",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Taxes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Yearly tax for municipality",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Year\": 2021,\r\n    \"TaxSize\": 0.2,\r\n    \"MunicipalityId\": 3\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44331/api/Taxes/AddYearly",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Taxes",
+						"AddYearly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Monthly tax for municipality",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Year\": 2021,\r\n    \"TaxSize\": 0.3,\r\n    \"MunicipalityId\": 3,\r\n    \"Month\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44331/api/Taxes/AddMonthly",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Taxes",
+						"AddMonthly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Weekly tax for municipality",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Year\": 2021,\r\n    \"TaxSize\": 0.3,\r\n    \"MunicipalityId\": 3,\r\n    \"WeekNumber\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44331/api/Taxes/AddWeekly",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Taxes",
+						"AddWeekly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Daily tax for municipality",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Day\": \"2021-01-26\",\r\n    \"TaxSize\": 0.1,\r\n    \"MunicipalityId\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44331/api/Taxes/AddDaily",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Taxes",
+						"AddDaily"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMunicipalityTaxOfDay",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Delete tax",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44331/api/Taxes",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Taxes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Import municipalities",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "import",
+							"type": "file",
+							"src": "/C:/Users/vaidotas.cibulskas/Desktop/ImportTest.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44331/api/Municipalities/import",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Municipalities",
+						"import"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
