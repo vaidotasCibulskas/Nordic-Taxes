@@ -8,7 +8,6 @@ using Nordic.Taxes.Extensions;
 using Nordic.Taxes.Resources;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Nordic.Taxes.Controllers
@@ -17,7 +16,7 @@ namespace Nordic.Taxes.Controllers
 	[Route("/api/[controller]")]
 	public class TaxesController : ControllerBase
 	{
-		private readonly ILogger<TaxesController> _logger;
+		private readonly ILogger<TaxesController> _logger; // Todo - logging
 		private readonly ITaxService _taxService;
 		private readonly IMapper _mapper;
 
@@ -34,7 +33,7 @@ namespace Nordic.Taxes.Controllers
 		{
 			var taxes = await _taxService.ListAsync();
 			var resources = _mapper.Map<IEnumerable<Tax>, IEnumerable<TaxResource>>(taxes);
-			
+
 			return resources;
 		}
 

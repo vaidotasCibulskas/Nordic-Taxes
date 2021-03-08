@@ -53,7 +53,7 @@ namespace Nordic.Taxes.Mapping
 						   opt => opt.MapFrom(src => src.Day))
 				.ReverseMap()
 				.ForMember(x => x.Day, x => x.Ignore());
-				
+
 		}
 
 		private static DateTime GetMonthDay(int year, int month, bool retLastDay)

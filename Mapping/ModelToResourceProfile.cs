@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Nordic.Taxes.Domain.Models;
-using Nordic.Taxes.Resources;
 using Nordic.Taxes.Extensions;
+using Nordic.Taxes.Resources;
 
 namespace Nordic.Taxes.Mapping
 {

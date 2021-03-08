@@ -24,7 +24,7 @@ namespace Nordic.Taxes.Services
 			_logger = logger;
 		}
 
-		
+
 		public async Task<IEnumerable<Municipality>> ListAsync()
 		{
 			return await _municipalityRepository.ListAsync();

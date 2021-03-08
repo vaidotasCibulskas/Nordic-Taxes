@@ -1,11 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using AutoMapper;
-using Nordic.Taxes.Domain.Models;
 
 namespace Nordic.Taxes.Resources
 {
-	public class SaveMonthlyTaxResource: BaseSaveTaxResource
+	public class SaveMonthlyTaxResource : BaseSaveTaxResource
 	{
 		[Required]
 		[Range(1, 12,

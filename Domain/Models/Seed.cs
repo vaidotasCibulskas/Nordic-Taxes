@@ -2,31 +2,29 @@
 using Microsoft.Extensions.DependencyInjection;
 using Nordic.Taxes.Persistence.Contexts;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Nordic.Taxes.Domain.Models
 {
-    public static class SeedData
-    {
-        public static void Initialize(IServiceProvider serviceProvider)
-        {
-            using (var context = new AppDbContext(
-                serviceProvider.GetRequiredService<
-                    DbContextOptions<AppDbContext>>()))
-            {
-                if (context.Taxes.Any())
-                {
-                    return;   // DB has been seeded
-                }
+	public static class SeedData
+	{
+		public static void Initialize(IServiceProvider serviceProvider)
+		{
+			using (var context = new AppDbContext(
+				serviceProvider.GetRequiredService<
+					DbContextOptions<AppDbContext>>()))
+			{
+				if (context.Taxes.Any())
+				{
+					return;   // DB has been seeded
+				}
 
 
-                context.Municipalities.AddRange(
+				context.Municipalities.AddRange(
 					new Municipality
 					{
 						Name = "Copenhagen"
-					}, 
+					},
 					new Municipality
 					{
 						Name = "Aarhus"
@@ -81,7 +79,7 @@ namespace Nordic.Taxes.Domain.Models
 				);
 
 				context.SaveChanges();
-            }
-        }
-    }
+			}
+		}
+	}
 }

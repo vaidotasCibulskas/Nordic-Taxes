@@ -1,7 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using AutoMapper;
-using Nordic.Taxes.Domain.Models;
 
 namespace Nordic.Taxes.Resources
 {

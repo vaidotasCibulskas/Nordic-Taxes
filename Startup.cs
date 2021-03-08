@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Nordic.Taxes.Domain.Repositories;
@@ -13,7 +11,6 @@ using Nordic.Taxes.Domain.Services;
 using Nordic.Taxes.Persistence.Contexts;
 using Nordic.Taxes.Persistence.Repositories;
 using Nordic.Taxes.Services;
-using System.IO;
 
 namespace Nordic.Taxes
 {
@@ -48,12 +45,13 @@ namespace Nordic.Taxes
 
 			services.AddAutoMapper(typeof(Startup));
 			services.AddLogging(configure => configure.AddConsole());
-			services.Configure<FormOptions>(o => {
+			services.Configure<FormOptions>(o =>
+			{
 				o.ValueLengthLimit = int.MaxValue;
 				o.MultipartBodyLengthLimit = int.MaxValue; // Todo set limits for file size
 				o.MemoryBufferThreshold = int.MaxValue;
 			});
-			
+
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +62,7 @@ namespace Nordic.Taxes
 				app.UseDeveloperExceptionPage();
 			}
 
-			app.UseHttpsRedirection();
+			//app.UseHttpsRedirection(); // Comment this line, when deployung as self-hosted service or deal with: https://stackoverflow.com/questions/18443181/configuring-ssl-on-asp-net-self-hosted-web-api
 
 			app.UseCors("CorsPolicy");
 

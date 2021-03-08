@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace Nordic.Taxes.Controllers
@@ -84,8 +83,7 @@ namespace Nordic.Taxes.Controllers
 			return Ok(municipalityResource);
 		}
 
-		[HttpPost("import")]
-		[HttpPost, DisableRequestSizeLimit]
+		[HttpPost("import"), DisableRequestSizeLimit]
 		public async Task<IActionResult> Upload()
 		{
 			try
@@ -133,6 +131,7 @@ namespace Nordic.Taxes.Controllers
 			}
 			catch (Exception ex)
 			{
+				_logger.LogError(ex, "Error importing files");
 				return StatusCode(500, $"Internal server error: {ex}");
 			}
 		}

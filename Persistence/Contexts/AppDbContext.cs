@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Nordic.Taxes.Domain.Models;
-using System;
 
 namespace Nordic.Taxes.Persistence.Contexts
 {
@@ -19,7 +18,7 @@ namespace Nordic.Taxes.Persistence.Contexts
 			builder.Entity<Municipality>().HasKey(p => p.Id);
 			builder.Entity<Municipality>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
 			builder.Entity<Municipality>().Property(p => p.Name).IsRequired().HasMaxLength(128);
-			builder.Entity<Municipality>().HasIndex(tx => new { tx.Name}).IsUnique();
+			builder.Entity<Municipality>().HasIndex(tx => new { tx.Name }).IsUnique();
 			builder.Entity<Municipality>().HasMany(p => p.Taxes).WithOne(p => p.Municipality).HasForeignKey(p => p.MunicipalityId);
 
 			builder.Entity<Tax>().ToTable("Taxes");

@@ -24,7 +24,7 @@ namespace Nordic.Taxes.Services
 			_logger = logger;
 		}
 
-		
+
 
 		public async Task<IEnumerable<Tax>> ListAsync()
 		{
@@ -49,7 +49,7 @@ namespace Nordic.Taxes.Services
 					return new TaxResponse($"Tax record ({tax.From} - {tax.To}) for selected municipality already exists.");
 				else
 					return new TaxResponse($"An error occurred when saving the tax for municipality"); // Todo: use constants or resource for messages
-				
+
 			}
 			catch (Exception ex)
 			{
@@ -62,7 +62,7 @@ namespace Nordic.Taxes.Services
 		{
 			try
 			{
-				var tax  = await _taxRepository.GetMunicipalityTaxOfDay(municipId, day);
+				var tax = await _taxRepository.GetMunicipalityTaxOfDay(municipId, day);
 				if (tax != null)
 					return new TaxResponse(tax);
 				else
