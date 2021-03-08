@@ -20,7 +20,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:44331/api/Municipalities/104",
+					"raw": "https://localhost:44331/api/Municipalities/4",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -29,7 +29,7 @@
 					"path": [
 						"api",
 						"Municipalities",
-						"104"
+						"4"
 					]
 				}
 			},
@@ -62,7 +62,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"Name\": \"second\"\r\n}",
+					"raw": "{\r\n  \"Name\": \"Aalborg2\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -89,7 +89,28 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": null
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44331/api/Municipalities/6",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Municipalities",
+						"6"
+					]
+				}
 			},
 			"response": []
 		},
@@ -121,6 +142,36 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"Year\": 2021,\r\n    \"TaxSize\": 0.2,\r\n    \"MunicipalityId\": 3\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44331/api/Taxes/AddYearly",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Taxes",
+						"AddYearly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "id = 1, Create Yearly tax for municipality",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Year\": 2021,\r\n    \"TaxSize\": 0.1,\r\n    \"MunicipalityId\": 1\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -238,7 +289,44 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "https://localhost:44331/api/Taxes/getTax/3/2021-01-26",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Taxes",
+						"getTax",
+						"3",
+						"2021-01-26"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMunicipalityTaxOfDay - id=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44331/api/Taxes/getTax/3/2021-01-26",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44331",
+					"path": [
+						"api",
+						"Taxes",
+						"getTax",
+						"3",
+						"2021-01-26"
+					]
+				}
 			},
 			"response": []
 		},
@@ -248,7 +336,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:44331/api/Taxes",
+					"raw": "https://localhost:44331/api/Taxes/1",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -256,7 +344,8 @@
 					"port": "44331",
 					"path": [
 						"api",
-						"Taxes"
+						"Taxes",
+						"1"
 					]
 				}
 			},

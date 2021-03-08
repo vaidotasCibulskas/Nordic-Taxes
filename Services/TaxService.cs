@@ -66,7 +66,7 @@ namespace Nordic.Taxes.Services
 				if (tax != null)
 					return new TaxResponse(tax);
 				else
-					return new TaxResponse($"For the selected municipality tax records for {day} day do not exist and/or municipality do not exist.");
+					return new TaxResponse($"For the selected municipality tax records for {day} day do not exist and/or municipality does not exist.");
 
 			}
 			catch (Exception ex)

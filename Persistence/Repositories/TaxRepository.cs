@@ -34,7 +34,7 @@ namespace Nordic.Taxes.Persistence.Repositories
 				_context.Taxes.Where(x => 
 				x.MunicipalityId == municipId && 
 				x.From <= day && 
-				x.To >= day).OrderBy(x => x.TaxType).FirstOrDefault()
+				x.To >= day).OrderByDescending(x => x.TaxType).FirstOrDefault()
 			);
 
 		}
