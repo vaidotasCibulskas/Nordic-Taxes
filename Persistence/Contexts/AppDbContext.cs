@@ -28,7 +28,7 @@ namespace Nordic.Taxes.Persistence.Contexts
 			builder.Entity<Tax>().Property(p => p.From).IsRequired();
 			builder.Entity<Tax>().Property(p => p.To).IsRequired();
 			builder.Entity<Tax>().Property(p => p.TaxSize).IsRequired();
-			builder.Entity<Tax>().HasIndex(tx => new { tx.MunicipalityId, tx.From, tx.To }).IsUnique();
+			builder.Entity<Tax>().HasIndex(tx => new { tx.MunicipalityId, tx.From, tx.To, tx.TaxType }).IsUnique();
 
 
 		}

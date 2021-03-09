@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Nordic.Taxes.Domain.Models;
 using Nordic.Taxes.Domain.Repositories;
+using Nordic.Taxes.Domain.Services.Communication;
+using Nordic.Taxes.Extensions;
 using Nordic.Taxes.Persistence.Contexts;
 using System;
 using System.Collections.Generic;
@@ -22,9 +24,23 @@ namespace Nordic.Taxes.Persistence.Repositories
 		}
 
 
-		public async Task AddAsync(Tax tax)
+		public async Task<TaxResponse> AddAsync(Tax tax)
 		{
-			await _context.Taxes.AddAsync(tax);
+			TaxResponse result;
+			var dateOverlap = _context.Taxes.Where(x =>
+				x.MunicipalityId == tax.Id &&
+				x.TaxType == tax.TaxType &&
+				(x.To >= tax.From && x.From <= tax.To))
+				.FirstOrDefault();
+			if (dateOverlap == null)
+			{
+				await _context.Taxes.AddAsync(tax);
+				result = new TaxResponse(tax);
+			}
+			else
+				result = new TaxResponse($"The tax (type: {tax.TaxType.ToDescriptionString()}) dates {tax.From} - {tax.To} - overlaps. Please correct the period.");
+
+			return result;
 		}
 
 		public Task<Tax> GetMunicipalityTaxOfDay(int municipId, DateTime day)

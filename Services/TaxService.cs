@@ -35,11 +35,11 @@ namespace Nordic.Taxes.Services
 		{
 			try
 			{
-				await _taxRepository.AddAsync(tax);
-				await _unitOfWork.CompleteAsync();
-
-				return new TaxResponse(tax);
-
+				var newTaxResp = await _taxRepository.AddAsync(tax);
+				if (newTaxResp.Success)
+					await _unitOfWork.CompleteAsync();
+				
+				return newTaxResp;
 			}
 			catch (DbUpdateException ex)
 			{
