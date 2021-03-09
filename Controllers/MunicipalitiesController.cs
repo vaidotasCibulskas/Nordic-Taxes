@@ -31,9 +31,14 @@ namespace Nordic.Taxes.Controllers
 			_mapper = mapper;
 		}
 		/// <summary>
-		/// Get all Municipalities
+		/// Get all municipalities
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>Returns all municipalities</returns>
+		/// <response code="200">Returns all municipalities</response>
+		/// <response code="400">If error is occured</response>          
+		[ProducesResponseType(201)]
+		[ProducesResponseType(400)]
+		[Produces("application/json")]
 		[HttpGet]
 		public async Task<IEnumerable<MunicipalityResource>> GetAllAsync()
 		{
@@ -43,11 +48,24 @@ namespace Nordic.Taxes.Controllers
 			return resources;
 		}
 		/// <summary>
-		/// Create new Municipalitiy
+		/// Create a new municipalitiy
 		/// </summary>
 		/// <param name="resource"></param>
-		/// <returns></returns>
+		/// <remarks>
+		/// Sample request:
+		/// 
+		///     POST api/Municipalities
+		///     {        
+		///       "Name": "Municipality"
+		///     }
+		/// </remarks>
+		/// <returns>A newly created municipality</returns>
+		/// <response code="200">Returns the newly created item</response>
+		/// <response code="400">If the item is null</response>          
 		[HttpPost]
+		[ProducesResponseType(200)]
+		[ProducesResponseType(400)]
+		[Produces("application/json")]
 		public async Task<IActionResult> PostAsync([FromBody] SaveMunicipalityResource resource)
 		{
 			if (!ModelState.IsValid)

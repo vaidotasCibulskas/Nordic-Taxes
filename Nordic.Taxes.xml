@@ -6,16 +6,28 @@
     <members>
         <member name="M:Nordic.Taxes.Controllers.MunicipalitiesController.GetAllAsync">
             <summary>
-            Get all Municipalities
+            Get all municipalities
             </summary>
-            <returns></returns>
+            <returns>Returns all municipalities</returns>
+            <response code="201">Returns all municipalities</response>
+            <response code="400">If error is occured</response>          
         </member>
         <member name="M:Nordic.Taxes.Controllers.MunicipalitiesController.PostAsync(Nordic.Taxes.Resources.SaveMunicipalityResource)">
             <summary>
-            Create new Municipalitiy
+            Create a new municipalitiy
             </summary>
             <param name="resource"></param>
-            <returns></returns>
+            <remarks>
+            Sample request:
+            
+                POST api/Municipalities
+                {        
+                  "Name": "Municipality"
+                }
+            </remarks>
+            <returns>A newly created municipality</returns>
+            <response code="200">Returns the newly created item</response>
+            <response code="400">If the item is null</response>          
         </member>
         <member name="M:Nordic.Taxes.Controllers.MunicipalitiesController.PutAsync(System.Int32,Nordic.Taxes.Resources.SaveMunicipalityResource)">
             <summary>
