@@ -30,7 +30,10 @@ namespace Nordic.Taxes.Controllers
 			_municipalityService = municipalityService;
 			_mapper = mapper;
 		}
-
+		/// <summary>
+		/// Get all Municipalities
+		/// </summary>
+		/// <returns></returns>
 		[HttpGet]
 		public async Task<IEnumerable<MunicipalityResource>> GetAllAsync()
 		{
@@ -39,7 +42,11 @@ namespace Nordic.Taxes.Controllers
 
 			return resources;
 		}
-
+		/// <summary>
+		/// Create new Municipalitiy
+		/// </summary>
+		/// <param name="resource"></param>
+		/// <returns></returns>
 		[HttpPost]
 		public async Task<IActionResult> PostAsync([FromBody] SaveMunicipalityResource resource)
 		{
@@ -54,7 +61,12 @@ namespace Nordic.Taxes.Controllers
 			var municipalityResource = _mapper.Map<Municipality, MunicipalityResource>(result.Municipality);
 			return Ok(municipalityResource);
 		}
-
+		/// <summary>
+		/// Update Municipalitiy
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="resource"></param>
+		/// <returns></returns>
 		[HttpPut("{id}")]
 		public async Task<IActionResult> PutAsync(int id, [FromBody] SaveMunicipalityResource resource)
 		{
@@ -70,7 +82,11 @@ namespace Nordic.Taxes.Controllers
 			var municipalityResource = _mapper.Map<Municipality, MunicipalityResource>(result.Municipality);
 			return Ok(municipalityResource);
 		}
-
+		/// <summary>
+		/// Delete Municipalitiy
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteAsync(int id)
 		{
@@ -82,7 +98,14 @@ namespace Nordic.Taxes.Controllers
 			var municipalityResource = _mapper.Map<Municipality, MunicipalityResource>(result.Municipality);
 			return Ok(municipalityResource);
 		}
-
+		/// <summary>
+		/// Import municipalities, by using Csv file:
+		/// Name
+		/// municipality1
+		/// municipality2
+		/// ...
+		/// </summary>
+		/// <returns></returns>
 		[HttpPost("import"), DisableRequestSizeLimit]
 		public async Task<IActionResult> Upload()
 		{
@@ -132,7 +155,7 @@ namespace Nordic.Taxes.Controllers
 			catch (Exception ex)
 			{
 				_logger.LogError(ex, "Error importing files");
-				return StatusCode(500, $"Internal server error: {ex}");
+				return StatusCode(500, $"Internal server error: {ex.Message}. Is file attached in the body?");
 			}
 		}
 	}

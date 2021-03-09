@@ -6,11 +6,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Nordic.Taxes.Domain.Repositories;
 using Nordic.Taxes.Domain.Services;
 using Nordic.Taxes.Persistence.Contexts;
 using Nordic.Taxes.Persistence.Repositories;
 using Nordic.Taxes.Services;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
 
 namespace Nordic.Taxes
 {
@@ -39,9 +42,7 @@ namespace Nordic.Taxes
 			services.AddScoped<IMunicipalityService, MunicipalityService>();
 			services.AddScoped<ITaxService, TaxService>();
 
-			services.AddControllers()
-					  .AddNewtonsoftJson(options =>
-					  options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+			
 
 			services.AddAutoMapper(typeof(Startup));
 			services.AddLogging(configure => configure.AddConsole());
@@ -51,6 +52,31 @@ namespace Nordic.Taxes
 				o.MultipartBodyLengthLimit = int.MaxValue; // Todo set limits for file size
 				o.MemoryBufferThreshold = int.MaxValue;
 			});
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new OpenApiInfo
+				{
+					Version = "v1",
+					Title = "Nordic.Tax Demo",
+					Description = "Nordic.Tax Demo for ValuesController",
+					//Contact = new OpenApiContact()
+					//{
+					//	Name = "",
+					//	Email = "...@gmail.com",
+					//	Url = "www.google.com"
+					//}
+				});
+				c.IncludeXmlComments(GetXmlCommentsPath());
+			});
+
+			services.AddControllers();
+			
+		}
+		private static string GetXmlCommentsPath()
+		{
+
+			return String.Format(@"{0}\Nordic.Taxes.xml",
+			AppDomain.CurrentDomain.BaseDirectory);
 
 		}
 
@@ -73,6 +99,13 @@ namespace Nordic.Taxes
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
+			});
+
+			// Enable middleware to serve generated Swagger as a JSON endpoint.
+			app.UseSwagger();
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
 			});
 		}
 	}

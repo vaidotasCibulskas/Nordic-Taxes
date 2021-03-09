@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nordic.Taxes</name>
+    </assembly>
+    <members>
+        <member name="M:Nordic.Taxes.Controllers.MunicipalitiesController.GetAllAsync">
+            <summary>
+            Get all Municipalities
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordic.Taxes.Controllers.MunicipalitiesController.PostAsync(Nordic.Taxes.Resources.SaveMunicipalityResource)">
+            <summary>
+            Create new Municipalitiy
+            </summary>
+            <param name="resource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordic.Taxes.Controllers.MunicipalitiesController.PutAsync(System.Int32,Nordic.Taxes.Resources.SaveMunicipalityResource)">
+            <summary>
+            Update Municipalitiy
+            </summary>
+            <param name="id"></param>
+            <param name="resource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordic.Taxes.Controllers.MunicipalitiesController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete Municipalitiy
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordic.Taxes.Controllers.MunicipalitiesController.Upload">
+            <summary>
+            Import municipalities, by using Csv file:
+            Name
+            municipality1
+            municipality2
+            ...
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordic.Taxes.Domain.Services.Communication.MunicipalityResponse.#ctor(Nordic.Taxes.Domain.Models.Municipality)">
+            <summary>
+            Creates a success response.
+            </summary>
+            <param name="municipality">Saved Municipality.</param>
+            <returns>Response.</returns>
+        </member>
+        <member name="M:Nordic.Taxes.Domain.Services.Communication.MunicipalityResponse.#ctor(System.String)">
+            <summary>
+            Creates am error response.
+            </summary>
+            <param name="message">Error message.</param>
+            <returns>Response.</returns>
+        </member>
+        <member name="M:Nordic.Taxes.Domain.Services.Communication.TaxResponse.#ctor(Nordic.Taxes.Domain.Models.Tax)">
+            <summary>
+            Creates a success response.
+            </summary>
+            <param name="Tax">Saved Tax.</param>
+            <returns>Response.</returns>
+        </member>
+        <member name="M:Nordic.Taxes.Domain.Services.Communication.TaxResponse.#ctor(System.String)">
+            <summary>
+            Creates am error response.
+            </summary>
+            <param name="message">Error message.</param>
+            <returns>Response.</returns>
+        </member>
+    </members>
+</doc>
