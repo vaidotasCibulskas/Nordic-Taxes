@@ -9,7 +9,7 @@
             Get all municipalities
             </summary>
             <returns>Returns all municipalities</returns>
-            <response code="201">Returns all municipalities</response>
+            <response code="200">Returns all municipalities</response>
             <response code="400">If error is occured</response>          
         </member>
         <member name="M:Nordic.Taxes.Controllers.MunicipalitiesController.PostAsync(Nordic.Taxes.Resources.SaveMunicipalityResource)">
