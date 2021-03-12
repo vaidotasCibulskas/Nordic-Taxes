@@ -30,6 +30,9 @@ namespace Nordic.Taxes.Controllers
 			_municipalityService = municipalityService;
 			_mapper = mapper;
 		}
+
+
+
 		/// <summary>
 		/// Get all municipalities
 		/// </summary>
@@ -47,6 +50,9 @@ namespace Nordic.Taxes.Controllers
 
 			return resources;
 		}
+
+
+
 		/// <summary>
 		/// Create a new municipalitiy
 		/// </summary>
@@ -79,6 +85,9 @@ namespace Nordic.Taxes.Controllers
 			var municipalityResource = _mapper.Map<Municipality, MunicipalityResource>(result.Municipality);
 			return Ok(municipalityResource);
 		}
+
+
+
 		/// <summary>
 		/// Update Municipalitiy
 		/// </summary>
@@ -100,6 +109,9 @@ namespace Nordic.Taxes.Controllers
 			var municipalityResource = _mapper.Map<Municipality, MunicipalityResource>(result.Municipality);
 			return Ok(municipalityResource);
 		}
+
+
+
 		/// <summary>
 		/// Delete Municipalitiy
 		/// </summary>
@@ -116,6 +128,9 @@ namespace Nordic.Taxes.Controllers
 			var municipalityResource = _mapper.Map<Municipality, MunicipalityResource>(result.Municipality);
 			return Ok(municipalityResource);
 		}
+
+
+
 		/// <summary>
 		/// Import municipalities, by using Csv file:
 		/// Name
@@ -125,7 +140,7 @@ namespace Nordic.Taxes.Controllers
 		/// </summary>
 		/// <returns></returns>
 		[HttpPost("import"), DisableRequestSizeLimit]
-		public async Task<IActionResult> Upload()
+		public async Task<IActionResult> Upload() // Todo: move file reading to service/repository
 		{
 			try
 			{
